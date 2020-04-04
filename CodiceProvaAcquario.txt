@@ -1,0 +1,49 @@
+ private Random rnd = new Random();
+        private DispatcherTimer dt;
+        private Image  goldfish;        
+        double x = 0, y = 0, angle = 180.00;
+       
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            InitializeElement();
+            dt = new DispatcherTimer(TimeSpan.FromMilliseconds(150), DispatcherPriority.Render, MovingElements, Dispatcher);
+            dt.Start();
+            
+        }
+
+        private void MovingElements(object sender, EventArgs e)
+        {
+            Debug.WriteLine(">>TICK<<");
+            x += (2 * 20);
+            y += (1 * 10);
+            
+            /*
+            if (x >= 150)
+            {
+                goldfish.RenderTransform = new RotateTransform(angle);
+                 Debug.WriteLine("180_ROTATION");
+
+            }
+            */
+            goldfish.RenderTransform = new TranslateTransform(x, y);            
+            //goldfish.RenderTransform = new RotateTransform(angle);
+
+
+
+        }
+        
+        private void InitializeElement()
+        {
+            
+             
+            /*
+            goldfish = new Image();
+            Uri fishURI = new Uri("Images\\Goldfish.png", UriKind.Relative);
+            goldfish.Source = new BitmapImage(fishURI);            
+            goldfish.Width = 200;
+            goldfish.Height = 150;            
+            Fondale.Children.Add(goldfish);
+            */
+        }
